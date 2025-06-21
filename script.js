@@ -28,6 +28,21 @@ const getGitHubProfile = async (login) => {
   }
 };
 
+const getGitRepos = async (login) => {
+  try {
+    const response = await fetch(`${apiBaseURL}/${login}/repos`);
+    if (response.status !== 200) {
+      new Error(`Something went wrong! Status Code: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 
 
 
