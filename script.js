@@ -88,6 +88,60 @@ const renderProfile = (data) => {
   document.querySelector("#profile").innerHTML = profileSnnipet;
 };
 
+const listRepos = (repos) => {
+  let reposList = ``;
+  if (repos.length > 0) {
+    repos.forEach((repo) => {
+      reposList += `<li class="mb-3 d-flex flex-content-stretch col-12 col-md-6 col-lg-6">
+          <div class="card" style="width: 22.5rem;">
+            <div class="card-body">
+            <h5 class="card-title"><a target="_blank" href="${repo.html_url}">${
+        repo.name
+      }</a></h5>
+            
+            <p class="card-text">${
+              repo.description !== null ? repo.description : ""
+            }</p>
+            <p>`;
+      if (repo.language !== null) {
+        reposList += `
+                   <i class="fas fa-circle ${
+                     repo.language ? repo.language.toLowerCase() : ""
+                   }"></i> ${repo.language}
+              `;
+      }
+
+      reposList += `<i class="far fa-star"></i> ${repo.stargazers_count}</p>
+          </div>
+          </div>
+          </li>`;
+    });
+  }
+
+  document.querySelector("#repos").innerHTML = reposList;
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchForm = document.querySelector("#searchForm");
+  searchForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const searchInput = document.querySelector("#searchInput");
+    const gitHubLogin = searchInput.value.trim();
+
+    if (gitHubLogin.length > 0) {
+      const userProfile = await getGitHubProfile(gitHubLogin);
+      if (userProfile.login) {
+        const gitRepos = await getGitRepos(gitHubLogin);
+        renderProfile(userProfile);
+        listRepos(gitRepos);
+        document.querySelector(".searchblock").style.display = "none";
+        document.querySelector(".profile").style.display = "block";
+      }
+    }
+  });
+});
+
+
 
 
 
