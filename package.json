@@ -1,0 +1,24 @@
+{
+  "name": "github-profile-search-app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "## Project Name: Github Profile Search App",
+  "main": "script.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.7.0",
+    "node-fetch": "^3.3.2"
+  },
+  "dependencies": {
+    "type": "module"
+  }
+}
