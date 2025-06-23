@@ -67,11 +67,16 @@ npx live-server
 
 Then, open your browser and go to `http://127.0.0.1:8080` (or the port shown in your terminal).
 
-Screenshots
+**Screenshots***
 
 1. **Search for a User**
 
+![before](screenshots/before.png)
+
+
 2. **View User and Repository**
+
+![after](screenshots/after.png)
 
 ---
 
